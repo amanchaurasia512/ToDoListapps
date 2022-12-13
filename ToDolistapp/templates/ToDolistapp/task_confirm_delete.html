@@ -1,0 +1,8 @@
+<form action="" method="post">
+     {% csrf_token %}
+    <h1>Are you sure want to delete {{List}}</h1>
+    <input type="submit" value="Yes">
+     <button onclick="window.location.href={% url 'task' %};">
+          Go back
+        </button>
+</form>

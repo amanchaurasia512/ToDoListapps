@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <h1>hello templates check</h1>
+{% if user.is_authenticated %}
+<h1>{{ request.user}}</h1>
+<a href="{% url 'logout' %} " style="color:blue"  ><h1>logout</h1></a>
+{% else %}
+<a href="{% url 'customlogin' %}"><b>Login</b></a>
+{% endif %}
+<hr>
+<h2><a href= {% url 'Task-CreateView' %}>Create task</a></h2>
+
+
+ <table>
+    <tr>
+        <th>
+            Task name
+        </th>
+    </tr>
+     {% for task in List  %}
+        <tr>
+          <th>{{task.AddTask}}</th>
+           {% if task.completed == True %}
+           <td>Completed</td>
+           {% endif %}
+          <td><a href={% url 'Task-update' task.id %}> Update Task</a></td>
+          <td><a href={% url 'Task-delete' task.id %}> Delete Task</a></td>
+        </tr>
+     {% empty %}
+      <h1>no element in list</h1>
+     {% endfor %}
+ </table>
+</head>
+<body>
+    
+</body>
+</html>
+
